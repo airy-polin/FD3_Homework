@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Homework #1</title>
+
+	<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet" />
+	<style>
+		body {
+			background-color: #333;
+		}
+	</style>
+</head>
+
+<body>
+	<div id="container"></div>
+
+	<script src="https://unpkg.com/react@15/dist/react.js"></script>
+	<script src="https://unpkg.com/react-dom@15/dist/react-dom.js"></script>
+
+	<script src="./ProductsList.js"></script>
+	<link rel="stylesheet" type="text/css" href="./ProductsList.css"/>
+
+	<script>
+		let tableName = 'Products list available for order';
+
+		const tableItems = [
+				{name: 'Hanging board', code: 1, price: 25, sample: './images/hanging-board.jpg', availability: 4,},
+				{name: 'Framed board', code: 2, price: 25, sample: './images/framed-board.jpg', availability: 2,},
+				{name: 'Game cubes', code: 3, price: 30, sample: './images/game-cubes.jpeg', availability: 6,},
+				{name: 'Topper', code: 4, price: 3, sample: './images/topper.jpg', availability: 38,}
+		];
+	
+		ReactDOM.render(
+			React.createElement(ProductsList, {name: tableName, products: tableItems,}),
+			document.getElementById('container')
+		);
+	</script>
+</body>
+</html>
