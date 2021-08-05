@@ -7,8 +7,8 @@ let ScrollingList = React.createClass({
 
 	getInitialState: function() {
 		return {
+			sorted: 0, // 0 - OFF, 1 - ON
 			filterValue: '',
-			sorted: false, // false - unsorted, true - sorted
 			data: this.props.list.map((item, count = 0) => {
 				count++;
 				return {name: item, code: count};
@@ -16,34 +16,64 @@ let ScrollingList = React.createClass({
 		};
 	},
 
-	readFilterValue: function(event) {
-		// console.log(event.target.value);
-		this.setState(prevState => ({
-			filterValue: event.target.value,
-		}));
+	toggleSorting: function() {
+		if (this.state.sorted === 0) {
+			const sortedArr = this.state.data
+				.sort((a, b) => a.name.toLowerCase() > b.name.toLowerCase() ? 1 : -1);
+
+			this.setState({data: sortedArr});
+			this.setState({sorted: 1});
+		} else {
+			this.setState({
+				data: this.props.list.map((item, count = 0) => {
+					count++;
+					return {name: item, code: count};
+				}),
+			});
+			this.setState({sorted: 0});
+		}
 	},
 
-	toggleSorting: function(event) {
-		this.setState(prevState => ({
-			sorted: !prevState.sorted,
-		}));
+	filterList: function(event) {
+		let value = event.target.value;
+		this.setState({filterValue: value});
+
+		if (value !== '') {
+			const filteredArr = this.state.data
+				.filter(elem => elem.name.toLowerCase().includes(value));
+
+			this.setState({data: filteredArr});
+		} else {
+			this.setState({
+				data: this.props.list.map((item, count = 0) => {
+					count++;
+					return {name: item, code: count};
+				}),
+			});
+		}
+	},
+
+	resetSettings: function() {
+		this.setState({sorted: 0});
+		this.setState({filterValue: ''});
+		this.setState({
+			data: this.props.list.map((item, count = 0) => {
+				count++;
+				return {name: item, code: count};
+			}),
+		});
 	},
 
 	render: function() {
-		let novels = this.state.data
-			.filter(novel => novel.name.includes(this.state.filterValue))
+		const novels = this.state.data
 			.map(novel => React.DOM.option({className: 'Novel', key: novel.code}, novel.name));
-
-		if (this.state.sorted) {
-			novels = novels.sort();
-		}
 
 		return (
 			React.DOM.div({className: 'NovelsList'},
 			React.DOM.div({className: 'ControlPanel'},
-				React.DOM.input({className: null, type: 'checkbox', defaultChecked: false, onChange: this.toggleSorting}),
-				React.DOM.input({className: null, type: 'text', value: this.state.filterValue, onChange: this.readFilterValue}),
-				React.DOM.input({className: null, type: 'button', value: 'reset'}),
+				React.DOM.input({className: null, type: 'checkbox', checked: this.state.sorted, onChange: this.toggleSorting}),
+				React.DOM.input({className: null, type: 'text', value: this.state.filterValue, onChange: this.filterList}),
+				React.DOM.input({className: null, type: 'button', value: 'reset', onClick: this.resetSettings}),
 			),
 			React.DOM.select({className: 'Novels', size: 5}, novels),
 		));
