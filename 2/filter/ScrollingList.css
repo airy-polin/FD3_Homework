@@ -1,0 +1,18 @@
+.NovelsList {
+	margin: 25px;
+	width: 15rem;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+
+/* Control Panel */
+.ControlPanel {
+	display: flex;
+	margin-bottom: 15px;
+}
+
+.ControlPanel > input {
+	margin-right: 5px;
+}
