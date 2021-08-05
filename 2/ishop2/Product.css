@@ -55,6 +55,7 @@
 	color: #fff;
 }
 
-.hovered {
+/* UI */
+.checked {
 	background-color: #02B3CE;
 }

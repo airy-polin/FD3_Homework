@@ -16,35 +16,53 @@ let ProductsList = React.createClass({
 
 	getInitialState: function() {
 		return {
-			products: this.props.products.map(product => product.name),
+			products: this.props.products,
 		}
 	},
 
-	highlightProduct: function(event) {
-		event.current.Target
+	highlightProduct: function(index) {
+		const initialArr = this.state.products;
+		
+		let checkedProduct = this.state.products
+			.find(product => product.code === index);
+
+		if (checkedProduct.checked) {
+			delete checkedProduct.checked;
+			this.setState({products: initialArr});
+		} else {
+			let checkedProductIndex = this.state.products
+				.findIndex(product => product.code === index);
+		
+			const updatedArr = this.state.products;
+			updatedArr[checkedProductIndex].checked = true;
+
+			this.setState({products: updatedArr});
+		}
 	},
 
 	deleteProduct: function(index) {
 		if (confirm('want to delete this product from the list?')) {
-			let arrOfProducts = this.state.products;
+			const arrOfProducts = this.state.products;
 			arrOfProducts.splice(index, 1);
 			this.setState({products: arrOfProducts});
 		}
 	},
 
 	render: function() {
-		const productCodes = this.props.products.map(p => 
-			React.createElement(Product, {
-				key: p.code,
-				index: p.code,
-				name: p.name,
-				price: p.price, 
-				sample: p.sample,
-				availability: p.availability,
-				highlightProduct: index => this.highlightProduct(index),
-				deleteProduct: index => this.deleteProduct(index),
-			})
-		);
+		const productCodes = this.state.products
+			.map(p => 
+				React.createElement(Product, {
+					key: p.code,
+					index: p.code,
+					name: p.name,
+					price: p.price, 
+					sample: p.sample,
+					availability: p.availability,
+					checked: p.checked,
+					highlightProduct: index => this.highlightProduct(index),
+					deleteProduct: index => this.deleteProduct(index),
+				})
+			);
 
 		return (
 			React.DOM.div({className: 'ProductsList'},
