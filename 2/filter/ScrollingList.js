@@ -24,12 +24,7 @@ let ScrollingList = React.createClass({
 			this.setState({data: sortedArr});
 			this.setState({sorted: 1});
 		} else {
-			this.setState({
-				data: this.props.list.map((item, count = 0) => {
-					count++;
-					return {name: item, code: count};
-				}),
-			});
+			this.resetDBToDefault();
 			this.setState({sorted: 0});
 		}
 	},
@@ -44,24 +39,23 @@ let ScrollingList = React.createClass({
 
 			this.setState({data: filteredArr});
 		} else {
-			this.setState({
-				data: this.props.list.map((item, count = 0) => {
-					count++;
-					return {name: item, code: count};
-				}),
-			});
+			this.resetDBToDefault();
 		}
 	},
 
-	resetSettings: function() {
-		this.setState({sorted: 0});
-		this.setState({filterValue: ''});
+	resetDBToDefault: function() {
 		this.setState({
 			data: this.props.list.map((item, count = 0) => {
 				count++;
 				return {name: item, code: count};
 			}),
 		});
+	},
+
+	resetAllSettings: function() {
+		this.setState({sorted: 0});
+		this.setState({filterValue: ''});
+		this.resetDBToDefault();
 	},
 
 	render: function() {
@@ -73,7 +67,7 @@ let ScrollingList = React.createClass({
 			React.DOM.div({className: 'ControlPanel'},
 				React.DOM.input({className: null, type: 'checkbox', checked: this.state.sorted, onChange: this.toggleSorting}),
 				React.DOM.input({className: null, type: 'text', value: this.state.filterValue, onChange: this.filterList}),
-				React.DOM.input({className: null, type: 'button', value: 'reset', onClick: this.resetSettings}),
+				React.DOM.input({className: null, type: 'button', value: 'reset', onClick: this.resetAllSettings}),
 			),
 			React.DOM.select({className: 'Novels', size: 5}, novels),
 		));
