@@ -17,26 +17,31 @@ let ProductsList = React.createClass({
 	getInitialState: function() {
 		return {
 			products: this.props.products,
+			checkedProduct: '',
 		}
 	},
 
 	highlightProduct: function(index) {
 		const initialArr = this.state.products;
-		
-		let checkedProduct = this.state.products
+
+		let clickedProduct = this.state.products
 			.find(product => product.code === index);
 
-		if (checkedProduct.checked) {
-			delete checkedProduct.checked;
-			this.setState({products: initialArr});
-		} else {
-			let checkedProductIndex = this.state.products
-				.findIndex(product => product.code === index);
-		
+		if (this.state.checkedProduct === '') {
+			let clickedProductIndex = this.state.products
+			.findIndex(product => product.code === index);
+	
 			const updatedArr = this.state.products;
-			updatedArr[checkedProductIndex].checked = true;
+			updatedArr[clickedProductIndex].checked = true;
 
 			this.setState({products: updatedArr});
+			this.setState({checkedProduct: index});
+		}
+
+		if (this.state.checkedProduct === index) {
+			delete clickedProduct.checked;
+			this.setState({products: initialArr});
+			this.setState({checkedProduct: ''});
 		}
 	},
 
