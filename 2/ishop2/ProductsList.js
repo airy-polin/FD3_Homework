@@ -22,27 +22,7 @@ let ProductsList = React.createClass({
 	},
 
 	highlightProduct: function(index) {
-		const initialArr = this.state.products;
-
-		let clickedProduct = this.state.products
-			.find(product => product.code === index);
-
-		if (this.state.checkedProduct === '') {
-			let clickedProductIndex = this.state.products
-			.findIndex(product => product.code === index);
-	
-			const updatedArr = this.state.products;
-			updatedArr[clickedProductIndex].checked = true;
-
-			this.setState({products: updatedArr});
-			this.setState({checkedProduct: index});
-		}
-
-		if (this.state.checkedProduct === index) {
-			delete clickedProduct.checked;
-			this.setState({products: initialArr});
-			this.setState({checkedProduct: ''});
-		}
+		this.state.checkedProduct === index ? this.setState({checkedProduct: ''}) : this.setState({checkedProduct: index});
 	},
 
 	deleteProduct: function(index) {
@@ -54,6 +34,8 @@ let ProductsList = React.createClass({
 	},
 
 	render: function() {
+		let checkedProduct = this.state.checkedProduct;
+
 		const productCodes = this.state.products
 			.map(p => 
 				React.createElement(Product, {
@@ -63,7 +45,7 @@ let ProductsList = React.createClass({
 					price: p.price, 
 					sample: p.sample,
 					availability: p.availability,
-					checked: p.checked,
+					checked: checkedProduct,
 					highlightProduct: index => this.highlightProduct(index),
 					deleteProduct: index => this.deleteProduct(index),
 				})

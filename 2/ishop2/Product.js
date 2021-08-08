@@ -7,7 +7,7 @@ let Product = React.createClass({
 		price: React.PropTypes.number.isRequired,
 		sample: React.PropTypes.string.isRequired,
 		availability: React.PropTypes.number.isRequired,
-		checked: React.PropTypes.bool,
+		checked: React.PropTypes.any,
 	},
 
 	highlightProduct: function(event) {
@@ -25,7 +25,7 @@ let Product = React.createClass({
 			availabilityEnding = ' pieces available';
 
 		return (
-			React.DOM.div({className: `Product ${this.props.checked ? 'checked' : ''}`, id: this.props.index, onClick: this.highlightProduct},
+			React.DOM.div({className: `Product ${(this.props.checked === this.props.index) ? 'checked' : ''}`, id: this.props.index, onClick: this.highlightProduct},
 				React.DOM.div({className: 'Media'},
 					React.DOM.img({className: null, src: this.props.sample})
 				),
