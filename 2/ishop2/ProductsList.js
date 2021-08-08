@@ -26,14 +26,11 @@ let ProductsList = React.createClass({
 	},
 
 	deleteProduct: function(index) {
-		const arrOfProducts = this.state.products;
-
 		if (confirm('want to delete this product from the list?')) {
-			let clickedProductIndex = arrOfProducts
-				.findIndex(product => product.code === index);
-
-			arrOfProducts.splice(clickedProductIndex, 1);
-			this.setState({products: arrOfProducts});
+			const updatedProducstsList = this.state.products
+				.filter(product => product.code !== index);
+		
+			this.setState({products: updatedProducstsList});
 		}
 	},
 
