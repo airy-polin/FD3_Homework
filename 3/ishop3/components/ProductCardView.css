@@ -1,0 +1,19 @@
+.ProductCardView {
+	display: flex;
+	flex-direction: column;
+	align-self: flex-start;
+	margin: 30px 0 0 30px;
+	font-family: 'Open Sans', sans-serif;
+	color: #fff;
+}
+
+.ProductCardView > span.Title {
+	margin-bottom: 10px;
+	font-weight: 700;
+	font-size: 20px;
+}
+
+.ProductCardView > span {
+	font-size: 14px;
+	font-weight: 400;
+}

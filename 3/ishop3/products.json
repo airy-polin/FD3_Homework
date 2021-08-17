@@ -1,0 +1,6 @@
+[
+	{"name": "Hanging board", "code": 1, "price": 25, "sample": "./images/hanging-board.jpg", "availability": 4},
+	{"name": "Framed board", "code": 2, "price": 25, "sample": "./images/framed-board.jpg", "availability": 2},
+	{"name": "Game cubes", "code": 3, "price": 30, "sample": "./images/game-cubes.jpeg", "availability": 6},
+	{"name": "Topper", "code": 4, "price": 3, "sample": "./images/topper.jpg", "availability": 38}
+]

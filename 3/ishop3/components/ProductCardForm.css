@@ -1,0 +1,54 @@
+.ProductCardForm {
+	display: flex;
+	flex-direction: column;
+	align-self: flex-start;
+	margin-left: 30px;
+	margin: 30px 0 0 30px;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 14px;
+	color: #fff;
+}
+
+.ProductCardForm > .Title {
+	font-weight: 700;
+	font-size: 20px;
+	margin-bottom: 25px;
+}
+
+.ProductCardForm > .Description {
+	display: flex;
+	flex-direction: column;
+}
+
+.Description > .DescriptionItem > label {
+	display: inline-block;
+	width: 7rem;
+}
+
+.ProductCardForm > .Buttons {
+	display: flex;
+	/* justify-content: center; */
+	margin-top: 20px;
+}
+
+.Buttons > input {
+	padding: 5px 10px;
+	margin: 0 5px;
+	width: 4rem;
+	border: none;
+	border-radius: 5px;
+	color: #fff;
+}
+.Buttons > input.Cancel {
+	background-color: #000;
+}
+.Buttons > input.Save {
+	background-color: lightseagreen;
+}
+
+
+/* UI */
+.error {
+	color: red;
+	margin-left: 10px;
+}

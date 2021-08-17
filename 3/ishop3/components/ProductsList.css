@@ -1,0 +1,30 @@
+.ProductsList {
+	margin: 25px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.Name {
+	font-family: 'Open Sans', sans-serif;
+	font-size: 22px;
+	text-transform: uppercase;
+	color: #fff;
+}
+
+.Products {
+	display: flex;
+	justify-content: center;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 14px;
+	margin-top: 35px;
+}
+
+.Button > input.Add {
+	margin-top: 60px;
+	padding: 10px 15px;
+	border-radius: 5px;
+	background-color: lightseagreen;
+	color: #fff;
+	text-transform: uppercase;
+}
