@@ -30,7 +30,6 @@ class ProductsList extends React.Component {
 
 	highlightProduct = (index) => {
 		this.state.checkedProduct === index ? this.setState({checkedProduct: ''}) : this.setState({checkedProduct: index});
-		console.log(`выделить продукт № ${index}`);
 	};
 
 	deleteProduct = (index) => {
@@ -66,7 +65,10 @@ class ProductsList extends React.Component {
 	};
 
 	addProduct = (event) => {
-		this.setState({mode: 2});
+		this.setState({
+			mode: 2,
+			isEditable: 2,
+		});
 	};
 
 	handleChangeOnExtension = (newProduct) => {
@@ -114,7 +116,7 @@ class ProductsList extends React.Component {
 
 		let lastCodeValue = this.state.products[this.state.products.length - 1].code;
 
-		let disabled = (this.state.isEditable === 2) ? 'disabled' : null;
+		let disabled = (this.state.isEditable === 2) ? true : false;
 
 		return (
 			<div className='ProductsList'>

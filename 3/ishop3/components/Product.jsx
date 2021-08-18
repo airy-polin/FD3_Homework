@@ -36,7 +36,7 @@ class Product extends React.Component {
 		let checked = (this.props.checked === this.props.index) ? 'checked' : '';
 		let classes = `Product ${checked}`;
 
-		let disabled = (this.props.isEditable === 2) ? 'disabled' : null;
+		let disabled = (this.props.isEditable === 2) ? true : false;
 
 		return (
 			<div className={classes} id={this.props.index} onClick={this.props.isEditable !== 2 ? this.highlightProduct : null}>

@@ -36,7 +36,6 @@
 }
 
 .Product > .Info > .Quantity {
-	color: gray;
 	font-style: italic;
 }
 .Product > .Info > .Quantity > .Number {
@@ -55,12 +54,17 @@
 	border-radius: 5px;
 	color: #fff;
 }
+
 .Product > .Info > .Buttons > input.Edit {
 	background-color: salmon;
 }
 .Product > .Info > .Buttons > input.Delete {
 	background-color: #000;
 }
+.Product > .Info > .Buttons > input:disabled {
+	color: #666666;
+}
+
 
 /* UI */
 .checked {

@@ -5,14 +5,14 @@
 	align-items: center;
 }
 
-.Name {
+.ProductsList > .Name {
 	font-family: 'Open Sans', sans-serif;
 	font-size: 22px;
 	text-transform: uppercase;
 	color: #fff;
 }
 
-.Products {
+.ProductsList > .Products {
 	display: flex;
 	justify-content: center;
 	font-family: 'Open Sans', sans-serif;
@@ -20,11 +20,14 @@
 	margin-top: 35px;
 }
 
-.Button > input.Add {
+.ProductsList > .Button > input.Add {
 	margin-top: 60px;
 	padding: 10px 15px;
 	border-radius: 5px;
 	background-color: lightseagreen;
 	color: #fff;
 	text-transform: uppercase;
+}
+.ProductsList > .Button > input:disabled {
+	color: #666666;
 }

@@ -20,18 +20,20 @@
 	flex-direction: column;
 }
 
-.Description > .DescriptionItem > label {
+.ProductCardForm > .Description > .DescriptionItem > label {
 	display: inline-block;
 	width: 7rem;
+}
+.ProductCardForm > .Description > .DescriptionItem > input {
+	width: 12rem;
 }
 
 .ProductCardForm > .Buttons {
 	display: flex;
-	/* justify-content: center; */
 	margin-top: 20px;
 }
 
-.Buttons > input {
+.ProductCardForm > .Buttons > input {
 	padding: 5px 10px;
 	margin: 0 5px;
 	width: 4rem;
@@ -39,11 +41,14 @@
 	border-radius: 5px;
 	color: #fff;
 }
-.Buttons > input.Cancel {
+.ProductCardForm > .Buttons > input.Cancel {
 	background-color: #000;
 }
-.Buttons > input.Save {
+.ProductCardForm > .Buttons > input.Save {
 	background-color: lightseagreen;
+}
+.ProductCardForm > .Buttons > input:disabled {
+	color: #666666;
 }
 
 

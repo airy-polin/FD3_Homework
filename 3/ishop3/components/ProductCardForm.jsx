@@ -19,15 +19,15 @@ class ProductCardForm extends React.Component {
 		price: this.props.price,
 		sample: this.props.sample,
 		availability: this.props.availability,
-		invalid: false, // false - success validation, true - failed validation
 		mode: this.props.mode,
+		invalid: (this.props.mode === 1) ? false : true, // false - success validation, true - failed validation
 	};
 
 	editInputVal = (event) => {
 		let key = event.target.id,
-			newVal = event.target.value,
+			newVal = (key === 'price' || key === 'availability') ? Number(event.target.value) : event.target.value,
 			updatedState = {};
-
+		
 		updatedState[key] = newVal;
 		this.setState(updatedState);
 
@@ -73,7 +73,7 @@ class ProductCardForm extends React.Component {
 	};
 
 	render() {
-		let disabled = this.state.invalid ? 'disabled' : null;
+		let disabled = this.state.invalid ? true : false;
 
 		return (
 			<div className='ProductCardForm'>
