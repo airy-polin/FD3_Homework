@@ -152,9 +152,9 @@ class ProductsList extends React.Component {
 					<ProductCardForm
 						index={lastCodeValue + 1}
 						name=''
-						price={0}
+						price=''
 						sample=''
-						availability={0}
+						availability=''
 						mode={this.state.mode}
 						handleChangeOnExtension={newProduct => this.handleChangeOnExtension(newProduct)}
 						cancelChange={mode => this.cancelChange(mode)}

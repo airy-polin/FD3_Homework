@@ -7,9 +7,9 @@ class ProductCardForm extends React.Component {
 	static propTypes = {
 		index: PropTypes.number.isRequired,
 		name: PropTypes.string.isRequired,
-		price: PropTypes.number.isRequired,
+		price: PropTypes.any.isRequired,
 		sample: PropTypes.string.isRequired,
-		availability: PropTypes.number.isRequired,
+		availability: PropTypes.any.isRequired,
 		mode: PropTypes.number.isRequired,
 	};
 
@@ -23,38 +23,56 @@ class ProductCardForm extends React.Component {
 		invalid: (this.props.mode === 1) ? false : true, // false - success validation, true - failed validation
 	};
 
+	processCard() {
+		const result = {
+			name: this.state.name,
+			code: this.state.index,
+			price: this.state.price,
+			sample: this.state.sample,
+			availability: this.state.availability,
+		};
+
+		return result;
+	};
+
 	editInputVal = (event) => {
 		let key = event.target.id,
 			newVal = (key === 'price' || key === 'availability') ? Number(event.target.value) : event.target.value,
 			updatedState = {};
 		
 		updatedState[key] = newVal;
-		this.setState(updatedState);
+		this.setState(updatedState, this.processCard);
 
-		!newVal ? this.setState({invalid: true}) : this.setState({invalid: false});
+		if (this.state.mode === 1) {
+			!newVal ? this.setState({invalid: true}) : this.setState({invalid: false});
+		}
+
+		if (this.state.mode === 2) {
+			const inputs = this.processCard();
+
+			for (let input in inputs) {
+				if (input === key) {
+					inputs[input] = newVal;
+				}
+			}
+
+			for (let input in inputs) {
+				if (!inputs[input]) {
+					return;
+				}
+			}
+
+			this.setState({invalid: false})
+		}
 	};
 
 	handleChangeOnEdit = (event) => {
-		const updatedProduct = {
-			name: this.state.name,
-			code: this.state.index,
-			price: this.state.price,
-			sample: this.state.sample,
-			availability: this.state.availability,
-		}
-
+		const updatedProduct = this.processCard();
 		this.props.handleChangeOnEdit(updatedProduct);
 	};
 
 	handleChangeOnExtension = (event) => {
-		const newProduct = {
-			name: this.state.name,
-			code: this.state.index,
-			price: this.state.price,
-			sample: this.state.sample,
-			availability: this.state.availability,
-		}
-
+		const newProduct = this.processCard();
 		this.props.handleChangeOnExtension(newProduct);
 	};
 
@@ -68,7 +86,6 @@ class ProductCardForm extends React.Component {
 		});
 
 		let mode = '';
-
 		this.props.cancelChange(mode);
 	};
 
