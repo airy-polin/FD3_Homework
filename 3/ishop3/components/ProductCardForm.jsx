@@ -43,27 +43,23 @@ class ProductCardForm extends React.Component {
 		updatedState[key] = newVal;
 		this.setState(updatedState, this.processCard);
 
-		if (this.state.mode === 1) {
-			!newVal ? this.setState({invalid: true}) : this.setState({invalid: false});
+		const inputs = this.processCard();
+
+		for (let input in inputs) {
+			if (input === key) {
+				inputs[input] = newVal;
+				break;
+			}
 		}
 
-		if (this.state.mode === 2) {
-			const inputs = this.processCard();
-
-			for (let input in inputs) {
-				if (input === key) {
-					inputs[input] = newVal;
-				}
+		for (let input in inputs) {
+			if (!inputs[input]) {
+				this.setState({invalid: true})
+				return;
 			}
-
-			for (let input in inputs) {
-				if (!inputs[input]) {
-					return;
-				}
-			}
-
-			this.setState({invalid: false})
 		}
+
+		this.setState({invalid: false});
 	};
 
 	handleChangeOnEdit = (event) => {
