@@ -1,0 +1,16 @@
+.TextSquare {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	width: 10rem;
+	height: 10rem;
+	margin: 25px;
+	padding: 10px;
+	color: #fff;
+	background-color: lightseagreen;
+}
+
+.hidden {
+	display: none;
+}
