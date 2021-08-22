@@ -1,21 +1,3 @@
-// import React from 'react';
-// import PropTypes from 'prop-types';
-
-// import './TextSquare.css';
-
-// const TextSquare = (props) => {
-
-// 	return (
-// 		<div className='TextSquare'>
-// 			{ this.props.children }
-// 		</div>
-// 	);
-// };
-
-// export default TextSquare;
-
-
-
 import React from 'react';
 import PropTypes from 'prop-types';
 
