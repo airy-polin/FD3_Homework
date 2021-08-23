@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 
 import './TextSquare.css';
@@ -10,13 +10,14 @@ class TextSquare extends React.Component {
 
 	render() {
 		let regexp = /<br\s?\/?>/ig,
-			counter = 1;
+			counter = 0;
 
 		const arr = this.props.text.split(regexp),
 			result = [];
 
-		arr.map((elem) => {
-			result.push(<span key={counter}>{elem}</span>, <br className='hidden' key={++counter} />)
+		arr.map((elem, index) => {
+			if (index) result.push(<br key={counter} />)
+			result.push(<Fragment key={++counter}>{elem}</Fragment>)
 			counter++;
 		});
 
