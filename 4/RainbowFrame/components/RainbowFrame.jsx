@@ -30,7 +30,7 @@ class RainbowFrame extends React.Component {
 		const innerFrames = this.props.colors.slice(1);
 		let children = this.props.children;
 
-		innerFrames.map(frameColor => {
+		innerFrames.forEach(frameColor => {
 			children = <div className='RainbowFrame' style={{borderColor: frameColor}}>{children}</div>
 		});
 
