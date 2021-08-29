@@ -27,7 +27,7 @@ class RainbowFrame extends React.Component {
 
 	// v2
 	render() {
-		const innerFrames = this.props.colors.slice(1);
+		const innerFrames = this.props.colors.slice(1).reverse();
 		let children = this.props.children;
 
 		innerFrames.forEach(frameColor => {
