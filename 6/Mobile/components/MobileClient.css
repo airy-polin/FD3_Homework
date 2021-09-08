@@ -1,0 +1,9 @@
+.TableLine > td > input {
+	border: none;
+	width: 6rem;
+}
+
+.TableLine > td.Balance > input {
+	border: none;
+	width: 3rem;
+}

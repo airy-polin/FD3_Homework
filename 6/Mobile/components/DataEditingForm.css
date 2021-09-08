@@ -1,0 +1,35 @@
+.DataEditForm {
+	margin-top: 35px;
+	width: 10rem;
+	display: flex;
+	flex-direction: column;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 12px;
+}
+
+.DataEditForm > label {
+	width: 5rem;
+	font-weight: bold;
+}
+
+.DataEditForm > label > input {
+	margin-bottom: 7px;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 12px;
+}
+
+.DataEditForm > .Buttons {
+	display: flex;
+	margin-top: 10px;
+	align-self: center;
+}
+.DataEditForm > .Buttons > input {
+	margin: 0 5px;
+	font-size: 18px;
+}
+.DataEditForm > .Buttons > input.CancelButton {
+	color: red;
+}
+.DataEditForm > .Buttons > input.SaveButton {
+	color: green;
+}
