@@ -1,0 +1,26 @@
+.MobileCompany {
+	width: 50rem;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 14px;
+}
+
+.TableFilter {
+	display: flex;
+}
+table {
+	margin: 15px 0;
+	border: 2px solid #000;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 14px;
+	/* border-collapse: collapse; */
+}
+th, td {
+	border: 1px solid #000;
+}
+th {
+	background-color: lightcyan;
+	padding: 10px;
+}
+td {
+	padding: 0 10px;
+}

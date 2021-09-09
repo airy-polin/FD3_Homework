@@ -1,0 +1,7 @@
+.Button {
+	margin: 3px;
+}
+
+.Button > button {
+	padding: 3px 7px;
+}
