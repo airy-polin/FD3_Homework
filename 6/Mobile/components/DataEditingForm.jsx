@@ -47,9 +47,8 @@ class DataEditingForm extends React.PureComponent {
 
 	saveChanges = () => {
 		if (this.props.formMode === 1) {
-			console.log(this.props.client);
 			let client = this.props.client;
-			if (this.newLastNameRef || this.newFirstNameRef || this.newMiddleNameRef || this.newBalanceRef) {
+			if (this.newLastNameRef.value !== client.fullName.lastName || this.newFirstNameRef.value !== client.fullName.firstName || this.newMiddleNameRef.value !== client.fullName.middleName || parseInt(this.newBalanceRef.value) !== client.balance) {
 				client = {
 					balance: parseInt(this.newBalanceRef.value),
 					fullName: {
@@ -59,8 +58,8 @@ class DataEditingForm extends React.PureComponent {
 					},
 				};
 				client.id = this.props.client.id;
-				myEvents.emit('ESaveChanges', client);
 			}
+			myEvents.emit('ESaveChanges', client);
 		}
 		if (this.props.formMode === 2) {
 			const client = {

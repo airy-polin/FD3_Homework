@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import PropTypes from 'prop-types';
 
 import './MobileCompany.css';
@@ -136,7 +136,7 @@ class MobileCompanyA1 extends React.PureComponent {
 			});
 		} else {
 			this.setState({
-				formMode: 0,
+				formMode: 0, //
 			});
 		}
 	};
@@ -185,47 +185,48 @@ class MobileCompanyA1 extends React.PureComponent {
 		);
 
 		return (
-			<div className='MobileCompany'>
-				<div className='TableHeader'>
-					<div className='Buttons' onClick={this.switchCompanyName}>
-						<Button value='А1' />
-						<Button value='МТС' />
+			<Fragment>
+				<div className='MobileCompany'>
+					<div className='TableHeader'>
+						<div className='Buttons' onClick={this.switchCompanyName}>
+							<Button value='А1' />
+							<Button value='МТС' />
+						</div>
+						<div className='CompanyName'>
+							<span>Компания: {this.state.name}</span>
+						</div>
 					</div>
-					<div className='CompanyName'>
-						<span>Компания: {this.state.name}</span>
+
+					<div className='TableFilter' onClick={this.fitFilterHandler}>
+						<Button value='Все' />
+						<Button value='Активные' />
+						<Button value='Заблокированные' />
+					</div>
+
+					<div className='TableData'>
+						<table>
+							<thead>
+								<tr className='TableHeader'>
+									<th>Фамилия</th>
+									<th>Имя</th>
+									<th>Отчество</th>
+									<th>Баланс</th>
+									<th>Статус</th>
+									<th>Редактировать</th>
+									<th>Удалить</th>
+								</tr>
+							</thead>
+
+							<tbody>
+								{ clients }
+							</tbody>
+						</table>
+					</div>
+
+					<div className='TableEditor' onClick={this.addForm}>
+						<Button value='Добавить клиента' />
 					</div>
 				</div>
-
-				<div className='TableFilter' onClick={this.fitFilterHandler}>
-					<Button value='Все' />
-					<Button value='Активные' />
-					<Button value='Заблокированные' />
-				</div>
-
-				<div className='TableData'>
-					<table>
-						<thead>
-							<tr className='TableHeader'>
-								<th>Фамилия</th>
-								<th>Имя</th>
-								<th>Отчество</th>
-								<th>Баланс</th>
-								<th>Статус</th>
-								<th>Редактировать</th>
-								<th>Удалить</th>
-							</tr>
-						</thead>
-
-						<tbody>
-							{ clients }
-						</tbody>
-					</table>
-				</div>
-
-				<div className='TableEditor' onClick={this.addForm}>
-					<Button value='Добавить клиента' />
-				</div>
-
 				{
 					(this.state.formMode === 1 || this.state.formMode === 2) &&
 					<DataEditingForm
@@ -234,7 +235,7 @@ class MobileCompanyA1 extends React.PureComponent {
 						client={editableClient}
 					/>
 				}
-			</div>
+			</Fragment>
 		);
 	}
 }
