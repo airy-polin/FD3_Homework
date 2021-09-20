@@ -40,25 +40,25 @@ class Scales {
 	}
 
 	getSumScale(): number {
-		let totalSum = 0;
+		let totalSum: number = 0;
 
-		for (let i = 0; i < this.products.length; i++) {
-			let currentProduct = this.products[i];
+		for (let i: number = 0; i < this.products.length; i++) {
+			let currentProduct: Product = this.products[i];
 			totalSum += currentProduct.getScale();
 		}
 
 		return totalSum;
 	}
 
-	getProductsList(): string {
+	getProductsList(): Array<string> {
 		const productsList: Array<string> = [];
 
-		for (let i = 0; i < this.products.length; i++) {
-			let currentProduct = this.products[i];
+		for (let i: number = 0; i < this.products.length; i++) {
+			let currentProduct: Product = this.products[i];
 			productsList.push(currentProduct.getName());
 		}
 
-		return productsList.join(', ');
+		return productsList;
 	}
 };
 
@@ -79,12 +79,12 @@ scales.addProduct(apple1);
 scales.addProduct(apple2);
 scales.addProduct(apple3);
 console.log(`products on the scales: ${scales.getProductsList()},
-total weigth equals to: ${scales.getSumScale()} kilos`);
+total weight equals to: ${scales.getSumScale()} kilos`);
 scales.products = [];
 
 scales.addProduct(tomato1);
 scales.addProduct(tomato2);
 scales.addProduct(tomato3);
 console.log(`products on the scales: ${scales.getProductsList()},
-total weigth equals to: ${scales.getSumScale()} kilos`);
+total weight equals to: ${scales.getSumScale()} kilos`);
 scales.products = [];

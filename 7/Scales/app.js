@@ -70,7 +70,7 @@ var Scales = /** @class */ (function () {
             var currentProduct = this.products[i];
             productsList.push(currentProduct.getName());
         }
-        return productsList.join(', ');
+        return productsList;
     };
     return Scales;
 }());
@@ -83,10 +83,10 @@ var tomato1 = new Tomato('Granadero', 22), tomato2 = new Tomato('Orange Hat', 13
 scales.addProduct(apple1);
 scales.addProduct(apple2);
 scales.addProduct(apple3);
-console.log("products on the scales: " + scales.getProductsList() + ",\ntotal weigth equals to: " + scales.getSumScale() + " kilos");
+console.log("products on the scales: " + scales.getProductsList() + ",\ntotal weight equals to: " + scales.getSumScale() + " kilos");
 scales.products = [];
 scales.addProduct(tomato1);
 scales.addProduct(tomato2);
 scales.addProduct(tomato3);
-console.log("products on the scales: " + scales.getProductsList() + ",\ntotal weigth equals to: " + scales.getSumScale() + " kilos");
+console.log("products on the scales: " + scales.getProductsList() + ",\ntotal weight equals to: " + scales.getSumScale() + " kilos");
 scales.products = [];
